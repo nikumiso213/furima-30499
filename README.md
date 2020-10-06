@@ -44,15 +44,15 @@
 - has_one :address
 
 ## addressesテーブル
-| column       | Type       | Options           |
-| ------------ | ---------- | ----------------- |
-| postal_code  | string     | null: false       |
-| prefecture   | integer    | null: false       |
-| city         | string     | null: false       |
-| address      | string     | null: false       |
-| building     | string     |                   |
-| phone_number | string     | null: false       |
-| purchase     | references | foreign_key: true |
+| column        | Type       | Options           |
+| ------------- | ---------- | ----------------- |
+| postal_code   | string     | null: false       |
+| prefecture_id | integer    | null: false       |
+| city          | string     | null: false       |
+| address       | string     | null: false       |
+| building      | string     |                   |
+| phone_number  | string     | null: false       |
+| purchase      | references | foreign_key: true |
 
 ### Association
 - belongs_to :purchase

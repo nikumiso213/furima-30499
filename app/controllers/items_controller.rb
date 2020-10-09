@@ -11,8 +11,9 @@ class ItemsController < ApplicationController
     @item = Item.new(params_item)
     if @item.save
       redirect_to action: :index
+    else
+      render :new 
     end
-      render :new
   end
 
   private

@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   def index
-
   end
 
   def new
@@ -12,7 +11,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to action: :index
     else
-      render :new 
+      render :new
     end
   end
 

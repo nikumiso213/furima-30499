@@ -30,7 +30,7 @@ RSpec.describe Item, type: :model do
   it 'category_idが1の場合保存できないこと' do
     @item.category_id = 1
     @item.valid?
-    expect(@item.errors.full_messages).to include("Category must be other than 1")
+    expect(@item.errors.full_messages).to include('Category must be other than 1')
   end
 
   it 'status_idが存在していない場合保存できないこと' do
@@ -42,7 +42,7 @@ RSpec.describe Item, type: :model do
   it 'status_idが1の場合保存できないこと' do
     @item.status_id = 1
     @item.valid?
-    expect(@item.errors.full_messages).to include("Status must be other than 1")
+    expect(@item.errors.full_messages).to include('Status must be other than 1')
   end
 
   it 'shopping_fee_idが存在していない場合保存できないこと' do
@@ -54,7 +54,7 @@ RSpec.describe Item, type: :model do
   it 'shopping_fee_idが1の場合保存できないこと' do
     @item.shopping_fee_id = 1
     @item.valid?
-    expect(@item.errors.full_messages).to include("Shopping fee must be other than 1")
+    expect(@item.errors.full_messages).to include('Shopping fee must be other than 1')
   end
 
   it 'prefecture_idが存在していない場合保存できないこと' do
@@ -66,7 +66,7 @@ RSpec.describe Item, type: :model do
   it 'prefecture_idが1の場合保存できないこと' do
     @item.prefecture_id = 1
     @item.valid?
-    expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+    expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
   end
 
   it 'delivery_schedule_idが存在していない場合保存できないこと' do
@@ -78,7 +78,7 @@ RSpec.describe Item, type: :model do
   it 'delivery_schedule_idが1の場合保存できないこと' do
     @item.delivery_schedule_id = 1
     @item.valid?
-    expect(@item.errors.full_messages).to include("Delivery schedule must be other than 1")
+    expect(@item.errors.full_messages).to include('Delivery schedule must be other than 1')
   end
 
   it 'priceが存在していない場合保存できないこと' do
@@ -88,21 +88,21 @@ RSpec.describe Item, type: :model do
   end
 
   it 'priceが299以下の場合保存できないこと' do
-    @item.price = "299"
+    @item.price = '299'
     @item.valid?
-    expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+    expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
   end
 
   it 'priceが10000000以上の場合保存できないこと' do
-    @item.price = "10000000"
+    @item.price = '10000000'
     @item.valid?
-    expect(@item.errors.full_messages).to include("Price must be less than 10000000")
+    expect(@item.errors.full_messages).to include('Price must be less than 10000000')
   end
 
   it 'priceが半角数字でない場合保存できないこと' do
-    @item.price = "１２３４５６７"
+    @item.price = '１２３４５６７'
     @item.valid?
-    expect(@item.errors.full_messages).to include("Price is not a number")
+    expect(@item.errors.full_messages).to include('Price is not a number')
   end
 
   it 'imageが存在していない場合保存できないこと' do
@@ -114,6 +114,6 @@ RSpec.describe Item, type: :model do
   it 'userと紐づいていない場合保存できないこと' do
     @item.user = nil
     @item.valid?
-    expect(@item.errors.full_messages).to include("User must exist")
+    expect(@item.errors.full_messages).to include('User must exist')
   end
 end

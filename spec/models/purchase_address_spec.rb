@@ -16,9 +16,9 @@ RSpec.describe PurchaseAddress, type: :model do
   end
 
   it 'postal_codeにハイフンが含まれていない場合保存できないこと' do
-    @purchase_address.postal_code = "123456"
+    @purchase_address.postal_code = '123456'
     @purchase_address.valid?
-    expect(@purchase_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+    expect(@purchase_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
   end
 
   it 'prefecture_idが存在していない場合保存できないこと' do
@@ -57,9 +57,9 @@ RSpec.describe PurchaseAddress, type: :model do
   end
 
   it 'phone_numberが半角数字でない場合保存できないこと' do
-    @purchase_address.phone_number = "０９０１２３４５６７８"
+    @purchase_address.phone_number = '０９０１２３４５６７８'
     @purchase_address.valid?
-    expect(@purchase_address.errors.full_messages).to include("Phone number は半角数字で入力してください")
+    expect(@purchase_address.errors.full_messages).to include('Phone number は半角数字で入力してください')
   end
 
   it 'tokenが存在していない場合保存できないこと' do

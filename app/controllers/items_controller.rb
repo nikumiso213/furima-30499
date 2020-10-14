@@ -48,8 +48,6 @@ class ItemsController < ApplicationController
 
   def move_to_index
     redirect_to action: :index unless user_signed_in? && current_user.id == @item.user.id
-    if Purchase.find_by(item_id: @item.id)
-      redirect_to action: :index
-    end
+    redirect_to action: :index if Purchase.find_by(item_id: @item.id)
   end
 end

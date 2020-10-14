@@ -9,6 +9,11 @@ RSpec.describe PurchaseAddress, type: :model do
     expect(@purchase_address).to be_valid
   end
 
+  it 'buildingが存在していないなくても保存できること' do
+    @purchase_address.building = nil
+    expect(@purchase_address).to be_valid
+  end
+
   it 'postal_codeが存在していない場合保存できないこと' do
     @purchase_address.postal_code = nil
     @purchase_address.valid?
@@ -45,11 +50,6 @@ RSpec.describe PurchaseAddress, type: :model do
     expect(@purchase_address.errors.full_messages).to include("Address can't be blank")
   end
 
-  it 'buildingが存在していないなくても保存できること' do
-    @purchase_address.building = nil
-    expect(@purchase_address).to be_valid
-  end
-
   it 'phone_numberが存在していない場合保存できないこと' do
     @purchase_address.phone_number = nil
     @purchase_address.valid?
@@ -59,7 +59,25 @@ RSpec.describe PurchaseAddress, type: :model do
   it 'phone_numberが半角数字でない場合保存できないこと' do
     @purchase_address.phone_number = '０９０１２３４５６７８'
     @purchase_address.valid?
-    expect(@purchase_address.errors.full_messages).to include('Phone number は半角数字で入力してください')
+    expect(@purchase_address.errors.full_messages).to include('Phone number は10桁か11桁の半角数字でハイフン(-)なしで入力してください')
+  end
+
+  it 'phone_numberが9桁以下の場合保存できないこと' do
+    @purchase_address.phone_number = "090123456"
+    @purchase_address.valid?
+    expect(@purchase_address.errors.full_messages).to include('Phone number は10桁か11桁の半角数字でハイフン(-)なしで入力してください')
+  end
+
+  it 'phone_numberが12桁以上の場合保存できないこと' do
+    @purchase_address.phone_number = "090123456789"
+    @purchase_address.valid?
+    expect(@purchase_address.errors.full_messages).to include('Phone number は10桁か11桁の半角数字でハイフン(-)なしで入力してください')
+  end
+
+  it 'phone_numberがハイフン(-)を含む場合保存できないこと' do
+    @purchase_address.phone_number = "090-1234-5678"
+    @purchase_address.valid?
+    expect(@purchase_address.errors.full_messages).to include('Phone number は10桁か11桁の半角数字でハイフン(-)なしで入力してください')
   end
 
   it 'tokenが存在していない場合保存できないこと' do

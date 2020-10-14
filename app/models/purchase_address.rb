@@ -7,7 +7,7 @@ class PurchaseAddress
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :city
     validates :address
-    validates :phone_number, format: { with: /\A[0-9]{10,11}\z/, message: 'は半角数字で入力してください' }
+    validates :phone_number, format: { with: /\A[0-9]{10,11}\z/, message: 'は10桁か11桁の半角数字でハイフン(-)なしで入力してください' }
     validates :token
   end
 

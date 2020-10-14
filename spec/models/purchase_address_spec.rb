@@ -63,19 +63,19 @@ RSpec.describe PurchaseAddress, type: :model do
   end
 
   it 'phone_numberが9桁以下の場合保存できないこと' do
-    @purchase_address.phone_number = "090123456"
+    @purchase_address.phone_number = '090123456'
     @purchase_address.valid?
     expect(@purchase_address.errors.full_messages).to include('Phone number は10桁か11桁の半角数字でハイフン(-)なしで入力してください')
   end
 
   it 'phone_numberが12桁以上の場合保存できないこと' do
-    @purchase_address.phone_number = "090123456789"
+    @purchase_address.phone_number = '090123456789'
     @purchase_address.valid?
     expect(@purchase_address.errors.full_messages).to include('Phone number は10桁か11桁の半角数字でハイフン(-)なしで入力してください')
   end
 
   it 'phone_numberがハイフン(-)を含む場合保存できないこと' do
-    @purchase_address.phone_number = "090-1234-5678"
+    @purchase_address.phone_number = '090-1234-5678'
     @purchase_address.valid?
     expect(@purchase_address.errors.full_messages).to include('Phone number は10桁か11桁の半角数字でハイフン(-)なしで入力してください')
   end

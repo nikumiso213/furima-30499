@@ -7,6 +7,11 @@ class ItemsController < ApplicationController
     @items = Item.all.order(created_at: 'DESC')
   end
 
+  def show
+    @comment = Comment.new
+    @comments = Comments.where(item_id: params[:id]).includes(:user)
+  end
+
   def new
     @item = Item.new
   end
